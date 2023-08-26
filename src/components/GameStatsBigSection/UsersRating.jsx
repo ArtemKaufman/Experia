@@ -41,7 +41,7 @@ export const UsersRating = ({ data, handleCheckboxChange, checkState }) => {
 };
 
 const UserData = ({ user, handleCheckboxChange }) => (
-  <FlexContainer key={user.name} gap="50px">
+  <FlexContainer key={user.name} gap="20px">
     <FlexContainer gap="16px">
       <SquareCheckbox
         color={user.color}

@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import FlexContainer from '../Flex';
 
 const CheckboxContainer = styled.label`
   display: inline-block;
@@ -33,6 +34,8 @@ const CustomCheckmark = styled.span`
 `;
 const InputCheckboxLabel = styled.label`
   display: inline-block;
+  font-size: 14px;
+  line-height: 10px;
 `;
 
 const SquareCheckbox = ({
@@ -40,6 +43,7 @@ const SquareCheckbox = ({
   checked,
   handleCheckboxChange,
   showChart,
+  label,
 }) => {
   return (
     <CheckboxContainer>
@@ -50,6 +54,7 @@ const SquareCheckbox = ({
           checked={checked}
           onChange={handleCheckboxChange(showChart)}
         />
+
         <CustomCheckbox color={color}>
           <CustomCheckmark color={color} checked={checked} />
         </CustomCheckbox>

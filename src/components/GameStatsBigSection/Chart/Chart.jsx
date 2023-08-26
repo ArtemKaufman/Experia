@@ -17,7 +17,7 @@ export const Chart = ({ data }) => {
   });
 
   return (
-    <ResponsiveContainer width="70%" height="70%">
+    <ResponsiveContainer width="70%" height="95%">
       <AreaChart data={transformedData}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">

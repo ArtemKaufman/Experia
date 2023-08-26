@@ -1,20 +1,13 @@
 import Dropdown from '../../../UI/DropDownMenu';
 import RoundCheckbox from '../../../UI/Checkbox/RoundCheckbox';
-import { useState } from 'react';
 
-export const SelectionData = () => {
-  const [chartLines, setChartLines] = useState('Graph');
-
-  const handleCheckboxChange = (label) => {
-    setChartLines(label);
-  };
-
+export const SelectionData = ({ chartLines, handleCheckboxChange }) => {
   return (
     <Dropdown name="Graph" atribute="Data type">
       <RoundCheckbox
         handleChange={handleCheckboxChange}
-        checked={chartLines === 'Diagrams'}
-        label="Diagrams"
+        checked={chartLines === 'Funnel'}
+        label="Funnel"
       />
       <RoundCheckbox
         handleChange={handleCheckboxChange}
@@ -23,8 +16,8 @@ export const SelectionData = () => {
       />
       <RoundCheckbox
         handleChange={handleCheckboxChange}
-        checked={chartLines === 'Table'}
-        label="Table"
+        checked={chartLines === 'Composed'}
+        label="Composed"
       />
       <RoundCheckbox
         handleChange={handleCheckboxChange}
