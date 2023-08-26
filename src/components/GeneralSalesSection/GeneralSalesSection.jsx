@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { SectionHeader } from '../../UI/SectionHeader';
 import Table from './Table';
 import { ModalList } from './ModalList';
+import LoadingStatus from './Skeleton';
 
 const SalesWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.greyBg};
@@ -16,24 +17,22 @@ const SalesWrapper = styled.div`
     height: 40px;
   }
 `;
-export const Typography = styled.p`
-  color: ${(props) => (props.color ? props.color : '#fff')};
-  width: ${(props) => (props.width ? props.width : '')};
-  font-size: ${(props) => (props.fontsize ? props.fontsize : '13px')};
-  font-weight: ${(props) => (props.fontWeight ? props.fontWeight : '400')};
-  text-align: ${(props) => (props.textalign ? props.textalign : 'start')};
-`;
-
-export const GeneralSalesSection = ({ data }) => {
+export const GeneralSalesSection = ({ data, isLoading }) => {
+  const content = isLoading ? (
+    <LoadingStatus />
+  ) : (
+    <>
+      {data.map((item, index) => (
+        <Table key={index} data={item} />
+      ))}
+    </>
+  );
   return (
     <SalesWrapper>
       <SectionHeader name="General Sales / Time" image="./icons/info.svg">
         <ModalList />
       </SectionHeader>
-
-      {data.map((item, index) => (
-        <Table key={index} data={item} />
-      ))}
+      {content}
     </SalesWrapper>
   );
 };

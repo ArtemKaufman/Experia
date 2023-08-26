@@ -11,6 +11,7 @@ export const Dashbord = () => {
   const [chartData, setChartData] = useState([]);
   const [usersData, setUsersData] = useState([]);
   const [salesData, setSalesData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch('http://vindev.cx.ua/dashboard')
@@ -20,6 +21,8 @@ export const Dashbord = () => {
         setChartData(data.chartData);
         setUsersData(data.users);
         setSalesData(data.general_sales_time);
+        setIsLoading(false);
+        setIsLoading(false);
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
@@ -28,9 +31,9 @@ export const Dashbord = () => {
       <CardsSection data={statisticData} />
       <FlexContainer gap="16px">
         <GameStatsSect data={chartData} usersData={usersData} />
-        <GameExcessiveSection data={chartData} />
+        <GameExcessiveSection isLoading={isLoading} data={chartData} />
       </FlexContainer>
-      <GeneralSalesSection data={salesData} />
+      <GeneralSalesSection data={salesData} isLoading={isLoading} />
     </div>
   );
 };

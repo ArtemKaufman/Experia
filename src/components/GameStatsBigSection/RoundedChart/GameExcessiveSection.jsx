@@ -4,6 +4,7 @@ import { SectionHeader } from '../../../UI/SectionHeader';
 import { PieChartComponent } from './RoundChart';
 import Dropdown from '../../../UI/DropDownMenu';
 import { List } from './List';
+import { Loader } from './Loader';
 
 const GameWrapper = styled.section`
   max-width: 428px;
@@ -15,15 +16,19 @@ const GameWrapper = styled.section`
   margin-top: 16px;
 `;
 
-export const GameExcessiveSection = ({ data }) => {
-  return (
-    <GameWrapper>
+export const GameExcessiveSection = ({ data, isLoading }) => {
+  const content = isLoading ? (
+    <Loader />
+  ) : (
+    <>
       <SectionHeader name="Game Stats">
         <Dropdown name="Napervile" atribute="Location">
           <List />
         </Dropdown>
       </SectionHeader>
+
       <PieChartComponent data={data} />
-    </GameWrapper>
+    </>
   );
+  return <GameWrapper>{content}</GameWrapper>;
 };
